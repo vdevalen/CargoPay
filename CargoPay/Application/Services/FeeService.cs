@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CargoPay.Application.Services
+﻿namespace CargoPay.Application.Services
 {
     public class FeeService
     {
@@ -9,9 +7,7 @@ namespace CargoPay.Application.Services
 
         private FeeService()
         {
-            // Initialize the fee with a random value
             UpdateFee();
-            // Simulate fee update every hour
             Task.Run(async () =>
             {
                 while (true)
