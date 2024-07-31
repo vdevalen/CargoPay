@@ -1,11 +1,13 @@
 ﻿using CargoPay.Application.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace CargoPay.Api.Controllers
 {
-    [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
+    [ApiController]
     public class PaymentController : ControllerBase
     {
         private readonly PaymentService _paymentService;

@@ -12,6 +12,7 @@ namespace CargoPay.Infrastructure.Data
 
         public DbSet<Card> Cards { get; set; }
         public DbSet<PaymentTransaction> PaymentTransactions { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

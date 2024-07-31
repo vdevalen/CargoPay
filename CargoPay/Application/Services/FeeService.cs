@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CargoPay.Application.Services
+﻿namespace CargoPay.Application.Services
 {
     public class FeeService
     {
