@@ -7,9 +7,7 @@
 
         private FeeService()
         {
-            // Initialize the fee with a random value
             UpdateFee();
-            // Simulate fee update every hour
             Task.Run(async () =>
             {
                 while (true)

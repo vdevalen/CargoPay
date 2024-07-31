@@ -8,16 +8,13 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// JWT Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -38,7 +35,6 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 
-// Register Application Services
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<CardService>();
@@ -46,7 +42,14 @@ builder.Services.AddScoped<PaymentService>();
 builder.Services.AddScoped<CardRepository>();
 builder.Services.AddScoped<PaymentTransactionRepository>();
 
-var app = builder.Build(); // Ensure this is called only once
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+});
+
+
+var app = builder.Build(); 
 
 if (app.Environment.IsDevelopment())
 {

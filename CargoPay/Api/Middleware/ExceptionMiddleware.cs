@@ -41,7 +41,7 @@ namespace CargoPay.Api.Middleware
                 StatusCode = context.Response.StatusCode,
                 Message = exception.Message,
                 StackTrace = exception.StackTrace,
-                InnerException = exception.InnerException?.ToString() // Añadir la inner exception
+                InnerException = exception.InnerException?.ToString()
             };
 
             _logger.LogError($"Exception: {exception.Message}");
@@ -60,7 +60,7 @@ namespace CargoPay.Api.Middleware
         public int StatusCode { get; set; }
         public string Message { get; set; }
         public string StackTrace { get; set; }
-        public string InnerException { get; set; } // Añadir la inner exception
+        public string InnerException { get; set; } 
 
         public override string ToString()
         {
