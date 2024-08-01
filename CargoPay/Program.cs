@@ -44,18 +44,20 @@ builder.Services.AddScoped<PaymentTransactionRepository>();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins",
+    options.AddPolicy("AllowAllOrigins",  // Asegúrate de usar el nombre correcto
         builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
 
-
-var app = builder.Build(); 
+var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Aquí debes usar "AllowAllOrigins" para que coincida con la política definida arriba
+app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
 
